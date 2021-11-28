@@ -1,0 +1,20 @@
+Welcome!
+<%= link_to '次へ', :controller => "students", :action => "link" %>
+<%= link_to "新規投稿", students_new_path %>
+
+<h1>GeekKobe</h1>
+<h3>投稿一覧</h3>
+<%= link_to "新規投稿へ", students_new_path %>
+<div class="students-container">
+  <% @student.each do |t| %>
+    <div class="tweet">
+      <%= t.name%>
+      <%= t.profile %>
+      <%= t.mentor %>
+      <%= t.grade %>
+      <%= t.created_at %>
+      <%= link_to "詳細へ", student_path(t.id) %>
+    </div>
+  <% end %>
+</div>
+<%= button_to 'ログアウト', destroy_user_session_path, method: :delete %>
